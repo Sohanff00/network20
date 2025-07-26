@@ -1,31 +1,3 @@
-// server.js
-const express = require('express');
-const mongoose = require('mongoose');
-const cors = require('cors');
-require('dotenv').config();
-
-const app = express();
-
-// Middleware
-app.use(express.json());
-app.use(cors());
-
-// MongoDB connection
-mongoose.connect(process.env.MONGO_URI, {
-  useNewUrlParser: true,
-  useUnifiedTopology: true
-}).then(() => console.log('✅ MongoDB connected'))
-  .catch(err => console.error('❌ DB connection failed:', err));
-
-// Routes
-app.use('/api', require('./routes/register'));
-
-const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => {
-  console.log(`🚀 Server running on port ${PORT}`);
-});
-
-// routes/register.js
 const express = require('express');
 const router = express.Router();
 const User = require('../models/User');
@@ -79,18 +51,3 @@ router.post('/register', async (req, res) => {
 });
 
 module.exports = router;
-
-// models/User.js
-const mongoose = require('mongoose');
-
-const UserSchema = new mongoose.Schema({
-  fullname: { type: String, required: true },
-  email: { type: String, required: true, unique: true },
-  phone: { type: String, required: true },
-  password: { type: String, required: true },
-  referral_code: { type: String },
-  referred_by: { type: String },
-  created_at: { type: Date, default: Date.now }
-});
-
-module.exports = mongoose.model('User', UserSchema);
