@@ -25,3 +25,5 @@ app.listen(PORT, () => {
 });
 
 app.use('/api', require('./routes/login'));
+
+app.use('/api', require('./routes/userinfo'));
