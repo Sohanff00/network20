@@ -1,0 +1,15 @@
+{
+  "name": "network20",
+  "version": "1.0.0",
+  "description": "My Node.js backend app",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.18.2",
+    "mongoose": "^7.5.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.4.0"
+  }
+}
